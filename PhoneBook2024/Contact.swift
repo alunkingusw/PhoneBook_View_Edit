@@ -6,12 +6,16 @@
 //
 
 import Foundation
+import SwiftUI
+
 class Contact:Identifiable, ObservableObject,Codable{
     let id = UUID()
     @Published var name:String
     @Published var number:String
+    @Published var image:Image?
     var editName:String
     var editNumber:String
+    @Published var editImage:Image?
     
     init (name:String, number:String){
         self.name = name

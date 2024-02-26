@@ -9,12 +9,14 @@ import SwiftUI
 
 struct PhoneBookView: View {
     @State var showView = false
+    @State var searchText = ""
     @ObservedObject var data:Contacts
     @Environment(\.scenePhase) private var scenePhase
     let saveAction: ()->Void
     var body: some View {
         NavigationStack{
-            List(data.contacts){ contact in
+            List(data.contacts.filter(
+                {"\($0.name)".localizedCaseInsensitiveContains(searchText) || searchText.isEmpty})){ contact in
                 NavigationLink{
                     ContactDetailView(contact: contact)
                 } label:{ContactRowView(contact:contact).swipeActions(edge:HorizontalEdge.trailing, allowsFullSwipe:false, content:{NavigationLink("Edit") {
@@ -22,13 +24,27 @@ struct PhoneBookView: View {
                 }.tint(.yellow)})}
             }.navigationTitle("Contacts")
                 .toolbar{
-                    Button("Add", systemImage: "person.fill.badge.plus") {
-                        showView.toggle()
-                    }.sheet(isPresented:$showView){
-                        ContactAddView(contactList:data)
+                    ToolbarItemGroup(placement: .primaryAction){
+                        Button("Add", systemImage: "person.fill.badge.plus") {
+                            showView.toggle()
+                        }.sheet(isPresented:$showView){
+                            ContactAddView(contactList:data)
+                        }
+                        
+                        Menu{
+                            Picker(selection:$data.sortBy, label:
+                                    Text("Sorting Options")){
+                                    Text("A-Z").tag(0)
+                                    Text("Z-A").tag(1)
+                            }
+                        }
+                    label:{
+                        Label("Sort", systemImage:"arrow.up.arrow.down")
                     }
+                    }
+                    
                 }
-        }
+        }.searchable(text:$searchText)
         .onChange(of: scenePhase){ phase in
             if phase == .inactive { saveAction()}
         }

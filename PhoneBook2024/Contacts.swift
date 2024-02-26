@@ -9,6 +9,20 @@ import Foundation
 class Contacts:ObservableObject{
     @Published var contacts:[Contact] = []
     
+    @Published var sortBy:Int = 0{
+        didSet{
+            if (sortBy==0){
+                contacts.sort{
+                    $0.name < $1.name
+                }
+            }else{
+                contacts.sort{
+                    $0.name > $1.name
+                }
+            }
+        }
+    }
+    
     private static func fileURL() throws -> URL{
         try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create:false)
             .appendingPathComponent("contacts.data")

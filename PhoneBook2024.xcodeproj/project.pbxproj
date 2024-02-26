@@ -17,6 +17,7 @@
 		B1AFD4E62B7A1F44006E9E71 /* ContactRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AFD4E52B7A1F44006E9E71 /* ContactRowView.swift */; };
 		B1AFD4E82B7A1FB1006E9E71 /* ContactDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AFD4E72B7A1FB1006E9E71 /* ContactDetailView.swift */; };
 		B1AFD4EA2B7A1FBA006E9E71 /* ContactAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AFD4E92B7A1FBA006E9E71 /* ContactAddView.swift */; };
+		B1B190042B8C978900351E4F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B190032B8C978900351E4F /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		B1AFD4E52B7A1F44006E9E71 /* ContactRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRowView.swift; sourceTree = "<group>"; };
 		B1AFD4E72B7A1FB1006E9E71 /* ContactDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailView.swift; sourceTree = "<group>"; };
 		B1AFD4E92B7A1FBA006E9E71 /* ContactAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAddView.swift; sourceTree = "<group>"; };
+		B1B190032B8C978900351E4F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				B1AFD4E52B7A1F44006E9E71 /* ContactRowView.swift */,
 				B1AFD4E72B7A1FB1006E9E71 /* ContactDetailView.swift */,
 				B1AFD4E92B7A1FBA006E9E71 /* ContactAddView.swift */,
+				B1B190032B8C978900351E4F /* ImagePicker.swift */,
 				B1AFD4D72B7A19B1006E9E71 /* Assets.xcassets */,
 				B1AFD4D92B7A19B1006E9E71 /* Preview Content */,
 			);
@@ -158,6 +161,7 @@
 				B1AFD4E82B7A1FB1006E9E71 /* ContactDetailView.swift in Sources */,
 				B1AFD4E42B7A1D27006E9E71 /* Contacts.swift in Sources */,
 				B1AFD4E22B7A1D1C006E9E71 /* Contact.swift in Sources */,
+				B1B190042B8C978900351E4F /* ImagePicker.swift in Sources */,
 				B1AFD4D62B7A19AF006E9E71 /* PhoneBookView.swift in Sources */,
 				B1AFD4D42B7A19AF006E9E71 /* PhoneBook2024App.swift in Sources */,
 				B13747272B83813100276499 /* ContactEditView.swift in Sources */,
