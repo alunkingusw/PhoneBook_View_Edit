@@ -34,6 +34,7 @@ class Contact:Identifiable, ObservableObject,Codable{
         
         try container.encode(name, forKey: .name)
         try container.encode(number, forKey: .number)
+        
     }
     
     required init(from decoder: Decoder) throws{

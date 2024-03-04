@@ -32,6 +32,7 @@ struct ContactAddView: View {
                 Spacer()
                 Button(action:{
                     contactList.contacts.append(newContact)
+                    //trigger a sort here to keep things in order.
                     dismiss()
                 }){
                     Text("Save")

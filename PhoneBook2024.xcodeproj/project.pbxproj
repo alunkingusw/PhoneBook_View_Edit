@@ -49,7 +49,6 @@
 		B1AFD4C72B7A19AF006E9E71 = {
 			isa = PBXGroup;
 			children = (
-				B13747262B83813100276499 /* ContactEditView.swift */,
 				B1AFD4D22B7A19AF006E9E71 /* PhoneBook2024 */,
 				B1AFD4D12B7A19AF006E9E71 /* Products */,
 			);
@@ -66,6 +65,7 @@
 		B1AFD4D22B7A19AF006E9E71 /* PhoneBook2024 */ = {
 			isa = PBXGroup;
 			children = (
+				B13747262B83813100276499 /* ContactEditView.swift */,
 				B1AFD4D32B7A19AF006E9E71 /* PhoneBook2024App.swift */,
 				B1AFD4D52B7A19AF006E9E71 /* PhoneBookView.swift */,
 				B1AFD4E12B7A1D1C006E9E71 /* Contact.swift */,
@@ -302,11 +302,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PhoneBook2024/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to unlock your data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,11 +336,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PhoneBook2024/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to unlock your data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -14,15 +14,27 @@ struct PhoneBookView: View {
     @Environment(\.scenePhase) private var scenePhase
     let saveAction: ()->Void
     var body: some View {
-        NavigationStack{
+        NavigationView{
             List(data.contacts.filter(
                 {"\($0.name)".localizedCaseInsensitiveContains(searchText) || searchText.isEmpty})){ contact in
-                NavigationLink{
-                    ContactDetailView(contact: contact)
-                } label:{ContactRowView(contact:contact).swipeActions(edge:HorizontalEdge.trailing, allowsFullSwipe:false, content:{NavigationLink("Edit") {
-                    ContactEditView(contact: contact)
-                }.tint(.yellow)})}
-            }.navigationTitle("Contacts")
+                    NavigationLink(destination: ContactDetailView(contact: contact)) {
+                        ContactRowView(contact: contact)
+                    }
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        NavigationLink(destination: ContactEditView(contact: contact)) {
+                            Text("Edit")
+                        }
+                        .tint(.yellow)
+                    }
+                    /*NavigationLink{
+                        ContactDetailView(contact: contact)
+                    } label:{
+                        ContactRowView(contact:contact)
+                    }
+                    .swipeActions(edge:HorizontalEdge.trailing, allowsFullSwipe:false, content:{NavigationLink("Edit") {
+                        ContactEditView(contact: contact)
+                    }.tint(.yellow)})*/
+                    }.navigationTitle("Contacts")
                 .toolbar{
                     ToolbarItemGroup(placement: .primaryAction){
                         Button("Add", systemImage: "person.fill.badge.plus") {
