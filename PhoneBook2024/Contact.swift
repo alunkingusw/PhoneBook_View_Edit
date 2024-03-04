@@ -12,10 +12,10 @@ class Contact:Identifiable, ObservableObject,Codable{
     let id = UUID()
     @Published var name:String
     @Published var number:String
-    @Published var image:Image?
+    @Published var image:UIImage?
     var editName:String
     var editNumber:String
-    @Published var editImage:Image?
+    @Published var editImage:UIImage?
     
     init (name:String, number:String){
         self.name = name
@@ -30,6 +30,7 @@ class Contact:Identifiable, ObservableObject,Codable{
     }
     
     func encode(to encoder: Encoder) throws{
+        writeImageToDisk()
         var container = encoder.container(keyedBy: CodingKeys.self)
         
         try container.encode(name, forKey: .name)
@@ -45,5 +46,29 @@ class Contact:Identifiable, ObservableObject,Codable{
         number = loadedNumber
         editName = loadedName
         editNumber = loadedNumber
+        //load image from disk if it exists!
+        let imagePath = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create:false).appendingPathComponent("\(number).jpg")
+        
+        if let loadPath = imagePath{
+            print(loadPath)
+            if let data = try? Data(contentsOf: loadPath){
+                self.image = UIImage(data: data)
+                print("loaded")
+            }
+        }
+            
     }
+    
+    func writeImageToDisk() {
+        if let imageToSave = self.image{
+            let imagePath = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create:false).appendingPathComponent("\(number).jpg") //Use the UUID for the image name.
+            if let jpegData = imageToSave.jpegData(compressionQuality: 0.5) { // I can adjust the compression quality.
+                if let savePath = imagePath{
+                    try? jpegData.write(to: savePath, options: [.atomic, .completeFileProtection])
+                    print("saved \(savePath)")
+                }
+            }
+        }
+    }
+    
 }
