@@ -15,11 +15,28 @@ import LocalAuthentication
 struct ContactEditView: View {
     @StateObject var contact:Contact
     @Environment(\.dismiss) private var dismiss
+    @State private var inputImage: UIImage?
     //variable to check if user has authenticated
+    @State private var showImagePicker = false
     
+    func loadImage(){
+        guard let inputImage = inputImage else {return}
+        contact.editImage = inputImage
+    }
 
     var body: some View {
         VStack(alignment: .leading){
+            ZStack{
+                Rectangle().fill(.secondary)
+                Text("Tap to select a picture")
+                    .foregroundColor(.white)
+                    .font(.headline)
+                if let image = contact.editImage{
+                    Image(uiImage:image).resizable().aspectRatio(contentMode: .fit)
+                }
+            }.onTapGesture {
+                showImagePicker = true
+            }
             TextField("Name", text: $contact.editName)
             TextField("Number", text: $contact.editNumber)
         }.navigationBarItems(trailing:Button("Save"){
@@ -27,10 +44,15 @@ struct ContactEditView: View {
             //authenticate the save
             authenticateSave()            
         })
+        .onChange(of: inputImage){_ in loadImage()}
+        .sheet(isPresented: $showImagePicker){
+            ImagePicker(image: $inputImage)
+        }
         //If the user hides the view before saving, then we cancel changes
         .onDisappear(perform:{
             contact.editName = contact.name
             contact.editNumber = contact.number
+            contact.editImage = contact.image
         })
     }
     
@@ -51,6 +73,7 @@ struct ContactEditView: View {
                         print("authenticated")
                         contact.name = contact.editName
                         contact.number = contact.editNumber
+                        contact.image = contact.editImage
                         
                     } else {
                         // there was a problem

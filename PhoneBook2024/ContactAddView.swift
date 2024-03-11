@@ -18,7 +18,9 @@ struct ContactAddView: View {
     
     func loadImage(){
         guard let inputImage = inputImage else {return}
+        //store the image as a view for this screen
         image = Image(uiImage:inputImage)
+        //save the image data to the contact
         newContact.image = inputImage
     }
     

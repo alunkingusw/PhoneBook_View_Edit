@@ -50,7 +50,6 @@ class Contact:Identifiable, ObservableObject,Codable{
         let imagePath = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create:false).appendingPathComponent("\(number).jpg")
         
         if let loadPath = imagePath{
-            print(loadPath)
             if let data = try? Data(contentsOf: loadPath){
                 self.image = UIImage(data: data)
                 print("loaded")
@@ -61,7 +60,7 @@ class Contact:Identifiable, ObservableObject,Codable{
     
     func writeImageToDisk() {
         if let imageToSave = self.image{
-            let imagePath = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create:false).appendingPathComponent("\(number).jpg") //Use the UUID for the image name.
+            let imagePath = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create:false).appendingPathComponent("\(number).jpg") //Don't use the UUID for the image name.
             if let jpegData = imageToSave.jpegData(compressionQuality: 0.5) { // I can adjust the compression quality.
                 if let savePath = imagePath{
                     try? jpegData.write(to: savePath, options: [.atomic, .completeFileProtection])
