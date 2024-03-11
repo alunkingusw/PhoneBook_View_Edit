@@ -16,7 +16,7 @@ struct ContactEditView: View {
     @StateObject var contact:Contact
     @Environment(\.dismiss) private var dismiss
     //variable to check if user has authenticated
-    @State private var isUnlocked = false
+    
 
     var body: some View {
         VStack(alignment: .leading){
@@ -38,8 +38,6 @@ struct ContactEditView: View {
         let context = LAContext()
         var error: NSError?
         
-        
-        
         // check whether biometric authentication is possible
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             // it's possible, so go ahead and use it
@@ -50,7 +48,6 @@ struct ContactEditView: View {
                 DispatchQueue.main.async {
                     if success {
                         // authenticated successfully
-                        isUnlocked = true
                         print("authenticated")
                         contact.name = contact.editName
                         contact.number = contact.editNumber
